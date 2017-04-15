@@ -30,12 +30,12 @@ Once these are downloaded, open  **skipthoughts.py** and set the paths to the ab
 
 Navigate to this directory structure and edit the file **sentence2vec.py**:
 	
-	Go to the *main* section of the file
+Go to the *main* section of the file
 	
-	Change the following as per application needs.
-      * data      --> List of all utterances (sentences of different intents) from which the nearest neighbor has to be computed.
-	  * sentence  --> The utterance or sentence for which the most likely intent is to be found by looking up the nearest neighbors in the dataset.
-	  * neighbors --> Number of nearest neighbors required to compute the semantic similarity of the given sentence. Default is set to 10
+Change the following as per application needs.
+* data      --> List of all utterances (sentences of different intents) from which the nearest neighbor has to be computed.
+* sentence  --> The utterance or sentence for which the most likely intent is to be found by looking up the nearest neighbors in the dataset.
+* neighbors --> Number of nearest neighbors required to compute the semantic similarity of the given sentence. Default is set to 10
 	
 Now, run the file as
 	**python sentence2vec.py**
