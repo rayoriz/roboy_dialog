@@ -28,15 +28,15 @@ You will first need to download the model files and word embeddings. The embeddi
 
 Once these are downloaded, open  **skipthoughts.py** and set the paths to the above files (path_to_models and path_to_tables). Now you are ready to go. Make sure to set the THEANO_FLAGS device if you want to use CPU or GPU.
 
-Navigate to this directory structure and edit the file  **sentence2vec.py **:
+Navigate to this directory structure and edit the file **sentence2vec.py**:
 	
-	Go to the section  **'if __name__ == "__main__":' **
+	Go to the section  **'if __name__ == "__main__":'**
 	
 	Change the following as per application needs.
     
-	Markup : * **data**      --> List of all utterances (sentences of different intents) from which the nearest neighbor has to be computed.
-			 * **sentence**  --> The utterance or sentence for which the most likely intent is to be found by looking up the nearest neighbors in the dataset.
-			 * **neighbors** --> Number of nearest neighbors required to compute the semantic similarity of the given sentence. Default is set to 10
+	Markup : * data      --> List of all utterances (sentences of different intents) from which the nearest neighbor has to be computed.
+			 * sentence  --> The utterance or sentence for which the most likely intent is to be found by looking up the nearest neighbors in the dataset.
+			 * neighbors --> Number of nearest neighbors required to compute the semantic similarity of the given sentence. Default is set to 10
 	
 Now, run the file as
 	**python sentence2vec.py**
@@ -46,8 +46,10 @@ Now, run the file as
 The encoder first loads the downloaded pretrained models and word embeddings. Optionally, you can chose to train the model again on the application specific dictionary so as to tune the weights with the intents of the data under concern.
 
 Then, it generates Skip-Thought Vectors for each sentence in the dataset.
+	
 	**encodings = encoder.encode(data)**
-encodings is a numpy array with as many rows as the length of X, and each row is 4800 dimensional (combine-skip model, from the paper). The first 2400 dimensions is the uni-skip model, and the last 2400 is the bi-skip model. We highly recommend using the combine-skip vectors, as they are almost universally the best performing in the paper experiments.
+	
+encodings is a numpy array with as many rows as the length of X, and each row is 4800 dimensional (combine-skip model, from the paper). The first 2400 dimensions is the uni-skip model, and the last 2400 is the bi-skip model. It is highly recommend using the combine-skip vectors, as they are almost universally the best performing in the paper experiments.
 
 The helper function **get_nn()** computes nearest neighbors of the given sentence in the dataset.
 
@@ -72,6 +74,12 @@ Ryan Kiros, Yukun Zhu, Ruslan Salakhutdinov, Richard S. Zemel, Antonio Torralba,
       year={2015}
     }
 
+## To Do
+
+Markup : - [ ] Make changes to **sentence2vec.py** to pass dataset, sample sentence and no. of neighbors as arguments
+		 - [ ] Use the nearest neighbors to classify the most likely intent of the new sentence/utterance.
+	
+	
 ## License
 
 [Apache License 2.0](http://www.apache.org/licenses/LICENSE-2.0)
