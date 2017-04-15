@@ -1,7 +1,7 @@
-# skip-thoughts
+# Sent2Vec (Skip-Thoughts)
 
-Sent2Vec encoder and training code from the paper [Skip-Thought Vectors](http://arxiv.org/abs/1506.06726).
-
+Sent2Vec to get nearest neighbor from intent-utterances.
+ 
 ## Dependencies
 
 This code is written in python. To use it you will need:
@@ -26,37 +26,42 @@ You will first need to download the model files and word embeddings. The embeddi
     wget http://www.cs.toronto.edu/~rkiros/models/bi_skip.npz
     wget http://www.cs.toronto.edu/~rkiros/models/bi_skip.npz.pkl
 
-Once these are downloaded, open skipthoughts.py and set the paths to the above files (path_to_models and path_to_tables). Now you are ready to go. Make sure to set the THEANO_FLAGS device if you want to use CPU or GPU.
+Once these are downloaded, open  **skipthoughts.py** and set the paths to the above files (path_to_models and path_to_tables). Now you are ready to go. Make sure to set the THEANO_FLAGS device if you want to use CPU or GPU.
 
-Navigate to this directory structure and edit the file sentence2vec.py:
-	Go to the section 'if __name__ == "__main__":'
-	Change the following as per application needs.
-    data      --> List of all utterances (sentences of different intents) from which the nearest neighbor has to be computed.
-	sentence  --> The utterance or sentence for which the most likely intent is to be found by looking up the nearest neighbors in the dataset.
-	neighbors --> Number of nearest neighbors required to compute the semantic similarity of the given sentence. Default is set to 10
+Navigate to this directory structure and edit the file  **sentence2vec.py **:
 	
-Now, run the file sentence2vec.py as
-    python sentence2vec.py
+	Go to the section  **'if __name__ == "__main__":' **
+	
+	Change the following as per application needs.
+    
+	Markup : * **data**      --> List of all utterances (sentences of different intents) from which the nearest neighbor has to be computed.
+			 * **sentence**  --> The utterance or sentence for which the most likely intent is to be found by looking up the nearest neighbors in the dataset.
+			 * **neighbors** --> Number of nearest neighbors required to compute the semantic similarity of the given sentence. Default is set to 10
+	
+Now, run the file as
+	**python sentence2vec.py**
 
 ## Logic
 
 The encoder first loads the downloaded pretrained models and word embeddings. Optionally, you can chose to train the model again on the application specific dictionary so as to tune the weights with the intents of the data under concern.
 
 Then, it generates Skip-Thought Vectors for each sentence in the dataset.
-	encodings = encoder.encode(data)
+	**encodings = encoder.encode(data)**
 encodings is a numpy array with as many rows as the length of X, and each row is 4800 dimensional (combine-skip model, from the paper). The first 2400 dimensions is the uni-skip model, and the last 2400 is the bi-skip model. We highly recommend using the combine-skip vectors, as they are almost universally the best performing in the paper experiments.
 
-The helper function get_nn() computes nearest neighbors of the given sentence in the dataset.
+The helper function **get_nn()** computes nearest neighbors of the given sentence in the dataset.
 
 As the vectors are being computed, it will print some numbers. The code works by extracting vectors in batches of sentences that have the same length - so the number corresponds to the current length being processed. If you want to turn this off, set verbose=False when calling encode.
 
 ## Sample
 
+Example of running the python file and its results
+
 ![Alt text](example.png?raw=true "Sample example of running the file and its results")
 
 ## Reference
 
-This code is based on the following paper:
+This Sent2Vec encoder and training code is based on the paper [Skip-Thought Vectors](http://arxiv.org/abs/1506.06726).
 
 Ryan Kiros, Yukun Zhu, Ruslan Salakhutdinov, Richard S. Zemel, Antonio Torralba, Raquel Urtasun, and Sanja Fidler. **"Skip-Thought Vectors."** *arXiv preprint arXiv:1506.06726 (2015).*
 
