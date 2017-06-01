@@ -32,15 +32,16 @@ Navigate to this directory structure and edit the file **sentence2vec.py**:
 	
 Go to the *main* section of the file
 	
+
+	
+Now, Open the notebook IntentGrouping.ipynb and tweak the data array and try out with a query sentence to get the neart neighbour 
+
+![Alt text](nb.png?raw=true "IntentGrouping.ipynb")
+
 Change the following as per application needs.
 * data      --> List of all utterances (sentences of different intents) from which the nearest neighbor has to be computed.
 * sentence  --> The utterance or sentence for which the most likely intent is to be found by looking up the nearest neighbors in the dataset.
 * neighbors --> Number of nearest neighbors required to compute the semantic similarity of the given sentence. Default is set to 10
-	
-Now, Open the notebook IntentGrouping.ipynb and tweak the data array and try out with a query sentence to get the neart neighbour 
-
-![Alt text](example2.png?raw=true "IntentGrouping.ipynb")
-
 
 ## Logic
 
@@ -56,11 +57,6 @@ The helper function **get_nn()** computes nearest neighbors of the given sentenc
 
 As the vectors are being computed, it will print some numbers. The code works by extracting vectors in batches of sentences that have the same length - so the number corresponds to the current length being processed. If you want to turn this off, set verbose=False when calling encode.
 
-## Sample
-
-Example of running the python file and its results
-
-![Alt text](example.png?raw=true "Sample example of running the file and its results")
 
 ## Reference
 
@@ -80,6 +76,7 @@ Ryan Kiros, Yukun Zhu, Ruslan Salakhutdinov, Richard S. Zemel, Antonio Torralba,
 - [X] Make changes to **sentence2vec.py** to pass dataset, sample sentence and no. of neighbors as arguments
 - [X] Use the nearest neighbors to classify the most likely intent of the new sentence/utterance.
 - [ ] Add more neighbour sentences.
+- [ ] Add Class for every neighbour sentences.
 - [ ] Evaluate.
 - [ ] Add ROS endpoint.
 
