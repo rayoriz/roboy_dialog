@@ -37,8 +37,10 @@ Change the following as per application needs.
 * sentence  --> The utterance or sentence for which the most likely intent is to be found by looking up the nearest neighbors in the dataset.
 * neighbors --> Number of nearest neighbors required to compute the semantic similarity of the given sentence. Default is set to 10
 	
-Now, run the file as
-	**python sentence2vec.py**
+Now, Open the notebook IntentGrouping.ipynb and tweak the data array and try out with a query sentence to get the neart neighbour 
+
+![Alt text](example2.png?raw=true "IntentGrouping.ipynb")
+
 
 ## Logic
 
@@ -75,8 +77,11 @@ Ryan Kiros, Yukun Zhu, Ruslan Salakhutdinov, Richard S. Zemel, Antonio Torralba,
 
 ## To Do
 
-- [ ] Make changes to **sentence2vec.py** to pass dataset, sample sentence and no. of neighbors as arguments
-- [ ] Use the nearest neighbors to classify the most likely intent of the new sentence/utterance.
+- [X] Make changes to **sentence2vec.py** to pass dataset, sample sentence and no. of neighbors as arguments
+- [X] Use the nearest neighbors to classify the most likely intent of the new sentence/utterance.
+- [ ] Add more neighbour sentences.
+- [ ] Evaluate.
+- [ ] Add ROS endpoint.
 
 ## License
 
