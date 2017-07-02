@@ -10,7 +10,7 @@ import cPickle as pkl
 import numpy
 import copy
 import nltk
-
+import os.path
 from collections import OrderedDict, defaultdict
 from scipy.linalg import norm
 from nltk.tokenize import word_tokenize
@@ -20,8 +20,9 @@ profile = False
 #-----------------------------------------------------------------------------#
 # Specify model and table locations here
 #-----------------------------------------------------------------------------#
-path_to_models = '/u/rkiros/public_html/models/'
-path_to_tables = '/u/rkiros/public_html/models/'
+# /Users/xtarx/Documents/TUM/3rd/Roboy/roboy_dialog/IntentGrouping/code/skip-thoughts/code/uni_skip.npz.pkl'
+path_to_models = os.getcwd() + "/models/"
+path_to_tables = os.getcwd() + "/models/"
 #-----------------------------------------------------------------------------#
 
 path_to_umodel = path_to_models + 'uni_skip.npz'
