@@ -2,6 +2,8 @@ package roboy.dialog.personality;
 
 import java.util.*;
 
+import org.ros.message.MessageListener;
+import org.ros.node.ConnectedNode;
 import roboy.dialog.action.Action;
 import roboy.dialog.action.FaceAction;
 import roboy.dialog.action.SpeechAction;
@@ -15,6 +17,7 @@ import roboy.memory.nodes.Interlocutor;
 import roboy.talk.Verbalizer;
 import roboy.util.Lists;
 import roboy.ros.RosMainNode;
+import org.ros.node.topic.Subscriber;
 
 /**
  * Currently, Roboys main personality. It tries to engage with people in a general
@@ -57,9 +60,9 @@ public class SmallTalkPersonality implements Personality {
 
     private String name;
 
-    private static final List<String> positive =
-            Arrays.asList("enthusiastic", "awesome", "great", "very good",
-                    "dope", "smashing", "happy", "cheerful", "good", "phantastic");
+//    private static final List<String> positive =
+//            Arrays.asList("enthusiastic", "awesome", "great", "very good",
+//                    "dope", "smashing", "happy", "cheerful", "good", "phantastic");
     private State state;
     private Verbalizer verbalizer;
     private RosMainNode rosMainNode;
@@ -67,10 +70,14 @@ public class SmallTalkPersonality implements Personality {
     // The class saving information about the conversation partner.
     private Interlocutor person;
 
-    public SmallTalkPersonality(Verbalizer verbalizer, RosMainNode node) {
-        this.verbalizer = verbalizer;
+    public SmallTalkPersonality(Verbalizer verbalizer, RosMainNode node, int mode) {this.verbalizer = verbalizer;
         this.rosMainNode = node;
-        this.initialize();
+        if (mode==0)
+            this.initializeAlona();
+        if (mode==1)
+            this.initializeAnna();
+        else
+            this.initialize();
     }
 
     /**
@@ -171,7 +178,7 @@ public class SmallTalkPersonality implements Personality {
         WildTalkState wild = new WildTalkState(rosMainNode);
         SegueState segue = new SegueState(wild);
         QuestionAnsweringState answer = new QuestionAnsweringState(segue);
-        QuestionRandomizerState qa = new QuestionRandomizerState(answer, person);
+        QuestionRandomizerState qa = new QuestionRandomizerState(answer, person, "sentences/generic");
 
         greetings.setNextState(intro);
         intro.setNextState(qa);
@@ -181,4 +188,55 @@ public class SmallTalkPersonality implements Personality {
 
         state = greetings;
     }
+
+    private void initializeAnna()
+    {
+        // initialize new conversation partner
+        person = new Interlocutor();
+        person.addName("Anna");
+        person.addInformation("MEMBER_OF", "Warr Hyperloop");
+        person.addInformation("LIVE_IN", "Munich");
+        // build state machine
+        GreetingState greetings = new GreetingState();
+        IntroductionState intro = new IntroductionState(person);
+        FarewellState farewell = new FarewellState();
+        WildTalkState wild = new WildTalkState(rosMainNode);
+        SegueState segue = new SegueState(wild);
+        QuestionAnsweringState answer = new QuestionAnsweringState(segue);
+        QuestionRandomizerState qa = new QuestionRandomizerState(answer, person, "sentences/anna/");
+
+        greetings.setNextState(intro);
+        intro.setNextState(qa);
+        qa.setTop(qa);
+        answer.setTop(qa);
+        wild.setNextState(qa);
+
+        state = greetings;
+    }
+
+    private void initializeAlona()
+    {
+        // initialize new conversation partner
+        person = new Interlocutor();
+        person.addName("Alona");
+//        person.addInformation("MEMBER_OF", "Warr Hyperloop");
+        person.addInformation("LIVE_IN", "Munich");
+        // build state machine
+        GreetingState greetings = new GreetingState();
+        IntroductionState intro = new IntroductionState(person);
+        FarewellState farewell = new FarewellState();
+        WildTalkState wild = new WildTalkState(rosMainNode);
+        SegueState segue = new SegueState(wild);
+        QuestionAnsweringState answer = new QuestionAnsweringState(segue);
+        QuestionRandomizerState qa = new QuestionRandomizerState(answer, person, "sentences/alona/");
+
+        greetings.setNextState(intro);
+        intro.setNextState(qa);
+        qa.setTop(qa);
+        answer.setTop(qa);
+        wild.setNextState(qa);
+
+        state = greetings;
+    }
+
 }

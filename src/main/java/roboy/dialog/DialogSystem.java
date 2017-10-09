@@ -1,6 +1,7 @@
 package roboy.dialog;
 
 import java.io.IOException;
+import java.net.DatagramSocket;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -83,8 +84,8 @@ public class DialogSystem {
 
 	    InputDevice input = new CommandLineInput();
 		 // InputDevice input = new BingInput(rosMainNode);
-//        DatagramSocket ds = new DatagramSocket(55555);
-//        InputDevice input = new UdpInput(ds);
+        DatagramSocket ds = new DatagramSocket(55555);
+        InputDevice NRinput = new UdpInput(ds);
 		InputDevice celebInput = new CelebritySimilarityInput();
 //		InputDevice roboyDetectInput = new RoboyNameDetectionInput();
 		InputDevice multiIn = new MultiInputDevice(input);//, celebInput, roboyDetectInput);
@@ -127,8 +128,16 @@ public class DialogSystem {
 
 //            while (!multiIn.listen().attributes.containsKey(Linguistics.ROBOYDETECTED)) {
 //            }
+            int mode = 0;
+            String in = NRinput.listen().sentence;
+            if (in.contains("alona"))
+                mode=0;
+            else if (in.contains("anna"))
+                mode=1;
+            else
+                mode=2;
 
-            Personality smallTalk = new SmallTalkPersonality(new Verbalizer(), rosMainNode);
+            Personality smallTalk = new SmallTalkPersonality(new Verbalizer(), rosMainNode, mode);
             Input raw;
             Interpretation interpretation;
             List<Action> actions = smallTalk.answer(new Interpretation(""));
