@@ -1,5 +1,5 @@
 {
-  "name" : [
+  "NAME" : [
     "How can I call you?",
     "What is your name?",
     "Who are you?"
@@ -42,7 +42,7 @@
     "Which organization do you work at?",
     "Where do you earn your living?"
   ],
-  "movies" : [
+  "MOVIE" : [
     "What is your favourite movie?",
     "What was the last movie you saw in the cinema?",
     "What is your favorite TV show?",

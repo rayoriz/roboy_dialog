@@ -19,7 +19,7 @@ public class QuestionRandomizerState implements State{
 	// TODO ask memory to add relation.
 	// TODO There are new predicates from memory, need integrating.
 	
-	private ArrayList<PersonalQAState> questionStates;
+	private ArrayList<PersonalQAState> questionStates = new ArrayList<>();
 	private PersonalQAState locationQuestion;
 	private HashMap<Neo4jRelations, Boolean> alreadyAsked;
 	private State inner;

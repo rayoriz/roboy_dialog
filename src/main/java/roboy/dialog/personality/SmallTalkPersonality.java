@@ -193,9 +193,9 @@ public class SmallTalkPersonality implements Personality {
     {
         // initialize new conversation partner
         person = new Interlocutor();
-        person.addName("Anna");
-        person.addInformation("MEMBER_OF", "Warr Hyperloop");
-        person.addInformation("LIVE_IN", "Munich");
+//        person.addName("Anna");
+//        person.addInformation("MEMBER_OF", "Warr Hyperloop");
+//        person.addInformation("LIVE_IN", "Munich");
         // build state machine
         GreetingState greetings = new GreetingState();
         IntroductionState intro = new IntroductionState(person);
@@ -218,9 +218,9 @@ public class SmallTalkPersonality implements Personality {
     {
         // initialize new conversation partner
         person = new Interlocutor();
-        person.addName("Alona");
+//        person.addName("Alona");
 //        person.addInformation("MEMBER_OF", "Warr Hyperloop");
-        person.addInformation("LIVE_IN", "Munich");
+//        person.addInformation("LIVE_IN", "Munich");
         // build state machine
         GreetingState greetings = new GreetingState();
         IntroductionState intro = new IntroductionState(person);
