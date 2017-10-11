@@ -6,6 +6,7 @@ package roboy.memory;
  * and used in the QuestionRandomizerState.
  */
 public enum Neo4jRelations {
+    NAME1("name"),
     NAME("NAME"),
     FROM("FROM"),
     HAS_HOBBY("HAS_HOBBY"),

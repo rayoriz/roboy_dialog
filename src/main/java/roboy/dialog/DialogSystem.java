@@ -128,8 +128,8 @@ public class DialogSystem {
 
 //            while (!multiIn.listen().attributes.containsKey(Linguistics.ROBOYDETECTED)) {
 //            }
-            int mode = 0;
-            String in = NRinput.listen().sentence;
+            int mode = 2;
+            String in = "kjl";//NRinput.listen().sentence;
             if (in.contains("alona"))
                 mode=0;
             else if (in.contains("anna"))

@@ -72,6 +72,7 @@ public class SmallTalkPersonality implements Personality {
 
     public SmallTalkPersonality(Verbalizer verbalizer, RosMainNode node, int mode) {this.verbalizer = verbalizer;
         this.rosMainNode = node;
+//        this.person = new Interlocutor();
         if (mode==0)
             this.initializeAlona();
         if (mode==1)
@@ -170,7 +171,7 @@ public class SmallTalkPersonality implements Personality {
     private void initialize()
     {
         // initialize new conversation partner
-        person = new Interlocutor();
+        this.person = new Interlocutor();
         // build state machine
         GreetingState greetings = new GreetingState();
         IntroductionState intro = new IntroductionState(person);
@@ -178,7 +179,7 @@ public class SmallTalkPersonality implements Personality {
         WildTalkState wild = new WildTalkState(rosMainNode);
         SegueState segue = new SegueState(wild);
         QuestionAnsweringState answer = new QuestionAnsweringState(segue);
-        QuestionRandomizerState qa = new QuestionRandomizerState(answer, person, "sentences/generic");
+        QuestionRandomizerState qa = new QuestionRandomizerState(answer, person, "sentences/generic/");
 
         greetings.setNextState(intro);
         intro.setNextState(qa);

@@ -65,7 +65,7 @@ public class QuestionRandomizerState implements State{
 		while (it.hasNext())
 		{
 			Map.Entry pair = (Map.Entry) it.next();
-			if (!pair.getKey().equals("FROM"))
+			if (!pair.getKey().equals("FROM") && !pair.getKey().equals("NAME"))
 			{
 				Neo4jRelations r = Neo4jRelations.valueOf((String) pair.getKey());
 				questionStates.add(initializeQuestion(r));
@@ -125,7 +125,12 @@ public class QuestionRandomizerState implements State{
 
 	private void checkForAskedQuestions() {
 		for(Neo4jRelations relation : alreadyAsked.keySet()) {
-			if(person.hasRelation(relation)) alreadyAsked.put(relation, true);
+			try {
+				if (person.hasRelation(relation)) alreadyAsked.put(relation, true);
+			}
+			catch (Exception e)
+			{}
+
 		}
 	}
 	

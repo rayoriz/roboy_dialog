@@ -1,9 +1,10 @@
 {
-  "name" : [
-    "My ears are failing me today."
-  ],
+  
   "FROM" : [
     "Oh, I have never heard of that."
+  ],
+    "STARTUPCON" : [
+    "STARTUPCON?"
   ],
   "HAS_HOBBY" : [
     "Don't know what that is, but good luck!"
@@ -23,7 +24,7 @@
   "WORK_FOR" : [
     "I don't know that one."
   ],
-  "movies" : [
+  "MOVIE" : [
     "Haven't heard of it. It's probably shit."
   ],
   "OCCUPATION" : [

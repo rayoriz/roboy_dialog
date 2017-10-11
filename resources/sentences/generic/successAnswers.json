@@ -1,9 +1,13 @@
 {
-  "name" : [
-    ["Nice to meet you ",""]
-  ],
+  
   "FROM" : [
     ["Oh, I should visit ",""]
+  ],
+    "STARTUPCON" : [
+    ["STARTUPCON?"]
+  ],
+      "MOVIE" : [
+    ["MOVIE"]
   ],
   "HAS_HOBBY" : [
     ["You are just like me, I love "," too"]
@@ -24,9 +28,6 @@
   ],
   "WORK_FOR" : [
     ["I have heard of ",""]
-  ],
-  "movies" : [
-    ["Oh, I would watch ",". If those vision guys finally fixed my perception."]
   ],
   "OCCUPATION" : [
     ["You are probably very poor doing ",""]

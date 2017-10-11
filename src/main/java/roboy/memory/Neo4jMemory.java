@@ -81,17 +81,32 @@ public class Neo4jMemory implements Memory<MemoryNodeModel>
         String result = rosMainNode.GetMemoryQuery(query.toJSON(gson));
         Type type = new TypeToken<HashMap<String, List<Integer>>>() {}.getType();
         HashMap<String, ArrayList<Integer>> list = gson.fromJson(result, type);
-        return list.get("id");
+        try {
+            return list.get("id");
+        }
+        catch (Exception e)
+        {
+            ArrayList<Integer> a = new ArrayList<>();
+            a.add(0);
+            return a;
+        }
     }
 
     public int create(MemoryNodeModel query) throws InterruptedException, IOException
     {
-        String result = rosMainNode.CreateMemoryQuery(query.toJSON(gson));
+        try
+        {
+            String result = rosMainNode.CreateMemoryQuery(query.toJSON(gson));
         // Handle possible Memory error message.
         if(result.contains("FAIL")) return 0;
         Type type = new TypeToken<Map<String,Integer>>() {}.getType();
         Map<String,Integer> list = gson.fromJson(result, type);
         return list.get("id");
+        }
+        catch (Exception e){
+            return 0;
+        }
+        
     }
 
     /**
