@@ -7,10 +7,12 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import roboy.dialog.action.Action;
+import roboy.dialog.action.AudioAction;
 import roboy.dialog.action.ShutDownAction;
 import roboy.dialog.action.SpeechAction;
 import roboy.linguistics.Linguistics;
 import roboy.linguistics.sentenceanalysis.Interpretation;
+import roboy.util.AudioFileMapping;
 import roboy.util.Maps;
 
 /**
@@ -35,15 +37,20 @@ public class Verbalizer {
 		case FAREWELL: return farewell(interpretation);
 		case SEGUE:    return segue(interpretation);
 		case ANECDOTE: return anecdote(interpretation);
+		case MOVIEREFERENCE: return moviereference(interpretation);
 		default:       return literalSentence(interpretation);
 		}
 	}
-	
+
 	public static final List<String> greetings = 
 			Arrays.asList("hello","hi","greetings","good morning","howdy","good day","hey");
 	
 	private SpeechAction greet(Interpretation interpretation){
 		return new SpeechAction(StatementBuilder.random(greetings));
+	}
+
+	private AudioAction moviereference(Interpretation interpretation) {
+		return new AudioAction((AudioFileMapping) interpretation.getFeature(Linguistics.QUOTATION));
 	}
 	
 	public static final List<String> farewells =

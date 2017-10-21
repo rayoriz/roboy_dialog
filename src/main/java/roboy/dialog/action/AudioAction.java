@@ -6,7 +6,7 @@ import roboy.util.AudioFileMapping;
 /**
  * Created by laura on 21.10.17.
  */
-public class AudioAction {
+public class AudioAction implements Action{
 
     private AudioFileMapping audioName;
 

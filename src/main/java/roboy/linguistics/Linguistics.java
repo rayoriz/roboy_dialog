@@ -34,7 +34,8 @@ public class Linguistics {
 		FAREWELL,
 		SEGUE,
 		ANECDOTE,
-		WHO, HOW_IS, HOW_DO, WHY, WHEN, WHERE, WHAT, IS_IT, DOES_IT, STATEMENT, NONE
+		WHO, HOW_IS, HOW_DO, WHY, WHEN, WHERE, WHAT, IS_IT, DOES_IT, STATEMENT, NONE,
+		MOVIEREFERENCE
 		}
 	
 	public enum SEMANTIC_ROLE {
@@ -116,7 +117,7 @@ public class Linguistics {
 	public static final String EMOTION = "emotion";
 	
 	/**
-	 * Contains the emotion Roboy intends to express based on the keyword detection in the EmotionAnalyzer
+	 * Contains the emotion Roboy intends to express based on the keyword detection in the MovieAnalyzer
 	 */
 	public static final String QUOTATION = "quotation";
 	

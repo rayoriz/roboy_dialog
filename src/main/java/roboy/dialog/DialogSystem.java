@@ -160,9 +160,10 @@ public class DialogSystem {
 //        OutputDevice output2 = new UdpOutput(ds, "localhost", 55556);
 		// EmotionOutput emotion = new EmotionOutput(rosMainNode);
         OutputDevice output = new CommandLineOutput();
+        OutputDevice output1 = new AudioOutput();
 //       OutputDevice output1 = new CerevoiceOutput(rosMainNode);
 //		OutputDevice multiOut = new MultiOutputDevice(output,output1);//, output2, emotion);
-        OutputDevice multiOut = new MultiOutputDevice(output);
+        OutputDevice multiOut = new MultiOutputDevice(output, output1);
 
 		List<Analyzer> analyzers = new ArrayList<Analyzer>();
 		analyzers.add(new Preprocessor());

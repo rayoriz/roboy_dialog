@@ -166,18 +166,22 @@ public class SmallTalkPersonality implements Personality {
         person = new Interlocutor();
         // build state machine
         GreetingState greetings = new GreetingState();
-        IntroductionState intro = new IntroductionState(person);
+        //IntroductionState intro = new IntroductionState(person);
         FarewellState farewell = new FarewellState();
         WildTalkState wild = new WildTalkState(rosMainNode);
         SegueState segue = new SegueState(wild);
         QuestionAnsweringState answer = new QuestionAnsweringState(segue);
-        QuestionRandomizerState qa = new QuestionRandomizerState(answer, person);
+        //QuestionRandomizerState qa = new QuestionRandomizerState(answer, person);
 
-        greetings.setNextState(intro);
+        /*greetings.setNextState(intro);
         intro.setNextState(qa);
         qa.setTop(qa);
         answer.setTop(qa);
-        wild.setNextState(qa);
+        wild.setNextState(qa);*/
+
+        greetings.setNextState(answer);
+        answer.setTop(answer);
+        wild.setNextState(answer);
 
         state = greetings;
     }

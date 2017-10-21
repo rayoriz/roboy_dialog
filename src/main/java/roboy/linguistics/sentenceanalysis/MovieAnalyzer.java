@@ -1,6 +1,7 @@
 package roboy.linguistics.sentenceanalysis;
 
 import roboy.linguistics.Linguistics;
+import roboy.util.AudioFileMapping;
 import roboy.util.MovieLists;
 
 import java.util.Arrays;
@@ -19,20 +20,24 @@ public class MovieAnalyzer implements Analyzer {
 
        // sample movies which roboy can detect        
         if (tokens.contains("terminator")){
-            sentence.getFeatures().put(Linguistics.QUOTATION, MovieLists.TERMINATOR);
+            sentence.getFeatures().put(Linguistics.QUOTATION, AudioFileMapping.TERMINATOR);
+//            sentence.getFeatures().put(Linguistics.QUOTATION, MovieLists.TERMINATOR);
 //            System.out.println("You said terminator, roboy understands and would trigger a quote - Hasta la vista baby!");
         }
         else if (tokens.contains("pulp") || tokens.contains("fiction")) {
-            sentence.getFeatures().put(Linguistics.QUOTATION, MovieLists.PULP);
+            sentence.getFeatures().put(Linguistics.QUOTATION, AudioFileMapping.PULP_FICTION);
+//            sentence.getFeatures().put(Linguistics.QUOTATION, MovieLists.PULP);
 //            System.out.println("Say what one more time m#@$@#$r!");
 
         }
         else if (tokens.contains("what") ) {
-            sentence.getFeatures().put(Linguistics.QUOTATION,MovieLists.PULP);
+            sentence.getFeatures().put(Linguistics.QUOTATION, AudioFileMapping.PULP_FICTION);
+//            sentence.getFeatures().put(Linguistics.QUOTATION,MovieLists.PULP);
 //            System.out.println("Say what one more time m#@$@#$r!");
         }
         else if (tokens.contains("bugs") && tokens.contains("bunny") ) {
-            sentence.getFeatures().put(Linguistics.QUOTATION, MovieLists.BUGS);
+            sentence.getFeatures().put(Linguistics.QUOTATION, AudioFileMapping.BUGS_BUNNY);
+//            sentence.getFeatures().put(Linguistics.QUOTATION, MovieLists.BUGS);
 //            System.out.println("Hey whats up doc");
         }
 

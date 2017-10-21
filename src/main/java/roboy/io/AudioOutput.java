@@ -31,8 +31,7 @@ public class AudioOutput implements OutputDevice {
                 catch (Exception e)
                 {
                     System.out.println("AUDIO input stream setup FAILED:");
-                    e.printStackTrace();
-                    System.exit(1);
+                    return;
                 }
                 AudioFormat audioFormat = audioInputStream.getFormat();
                 SourceDataLine line = null;
@@ -44,13 +43,13 @@ public class AudioOutput implements OutputDevice {
                 }
                 catch (LineUnavailableException e)
                 {
-                    e.printStackTrace();
-                    System.exit(1);
+                    System.out.println("AUDIO line setup FAILED:");
+                    return;
                 }
                 catch (Exception e)
                 {
-                    e.printStackTrace();
-                    System.exit(1);
+                    System.out.println("AUDIO line setup FAILED:");
+                    return;
                 }
                 line.start();
                 int	nBytesRead = 0;
@@ -63,7 +62,8 @@ public class AudioOutput implements OutputDevice {
                     }
                     catch (IOException e)
                     {
-                        e.printStackTrace();
+                        System.out.println("AUDIO output FAILED:");
+                        return;
                     }
                     if (nBytesRead >= 0)
                     {

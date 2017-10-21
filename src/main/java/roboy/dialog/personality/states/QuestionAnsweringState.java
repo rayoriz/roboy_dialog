@@ -12,7 +12,9 @@ import roboy.linguistics.sentenceanalysis.Interpretation;
 import roboy.logic.PASInterpreter;
 import roboy.memory.DBpediaMemory;
 import roboy.memory.Memory;
+import roboy.util.AudioFileMapping;
 import roboy.util.Lists;
+import roboy.util.Maps;
 import roboy.util.Relation;
 
 /**
@@ -80,9 +82,10 @@ public class QuestionAnsweringState implements State{
 		List<Interpretation> result = new ArrayList<>();
 
 		// Check for movie reference. If present, react with movie quote.
-		String movieReference = (String) input.getFeatures().get(Linguistics.QUOTATION);
+		AudioFileMapping movieReference = (AudioFileMapping) input.getFeatures().get(Linguistics.QUOTATION);
 		if(movieReference != null) {
-
+			result.add(new Interpretation(SENTENCE_TYPE.MOVIEREFERENCE,
+					Maps.stringObjectMap(Linguistics.QUOTATION, movieReference)));
 			return new Reaction(this, result);
 		}
 
