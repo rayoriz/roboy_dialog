@@ -6,10 +6,7 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import roboy.dialog.action.Action;
-import roboy.dialog.action.AudioAction;
-import roboy.dialog.action.ShutDownAction;
-import roboy.dialog.action.SpeechAction;
+import roboy.dialog.action.*;
 import roboy.linguistics.Linguistics;
 import roboy.linguistics.sentenceanalysis.Interpretation;
 import roboy.util.AudioFileMapping;
@@ -49,8 +46,8 @@ public class Verbalizer {
 		return new SpeechAction(StatementBuilder.random(greetings));
 	}
 
-	private AudioAction moviereference(Interpretation interpretation) {
-		return new AudioAction((AudioFileMapping) interpretation.getFeature(Linguistics.QUOTATION));
+	private FaceAction moviereference(Interpretation interpretation) {
+		return new FaceAction("pulp_fiction");
 	}
 	
 	public static final List<String> farewells =

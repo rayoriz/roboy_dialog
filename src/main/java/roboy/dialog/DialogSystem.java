@@ -8,6 +8,7 @@ import java.util.List;
 import com.google.gson.JsonIOException;
 
 import roboy.dialog.action.Action;
+import roboy.dialog.action.FaceAction;
 import roboy.dialog.action.ShutDownAction;
 import roboy.dialog.personality.Personality;
 import roboy.dialog.personality.SmallTalkPersonality;
@@ -158,12 +159,12 @@ public class DialogSystem {
 //        CerevoiceOutput output2 = new CerevoiceOutput(rosMainNode);
 		// OutputDevice output = new BingOutput();
 //        OutputDevice output2 = new UdpOutput(ds, "localhost", 55556);
-		// EmotionOutput emotion = new EmotionOutput(rosMainNode);
+		EmotionOutput emotion = new EmotionOutput(rosMainNode);
         OutputDevice output = new CommandLineOutput();
         OutputDevice output1 = new AudioOutput();
 //       OutputDevice output1 = new CerevoiceOutput(rosMainNode);
 //		OutputDevice multiOut = new MultiOutputDevice(output,output1);//, output2, emotion);
-        OutputDevice multiOut = new MultiOutputDevice(output, output1);
+        OutputDevice multiOut = new MultiOutputDevice(output, output1, emotion);
 
 		List<Analyzer> analyzers = new ArrayList<Analyzer>();
 		analyzers.add(new Preprocessor());
