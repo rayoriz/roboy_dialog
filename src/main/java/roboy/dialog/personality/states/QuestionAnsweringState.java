@@ -76,6 +76,16 @@ public class QuestionAnsweringState implements State{
 	 */
 	@Override
 	public Reaction react(Interpretation input) {
+		//TODO Integrate results from intent analysis into sentence type detection.
+		List<Interpretation> result = new ArrayList<>();
+
+		// Check for movie reference. If present, react with movie quote.
+		String movieReference = (String) input.getFeatures().get(Linguistics.QUOTATION);
+		if(movieReference != null) {
+
+			return new Reaction(this, result);
+		}
+
 		Triple triple = (Triple) input.getFeatures().get(Linguistics.TRIPLE);
 		
 		// reverse you <-> I
@@ -83,8 +93,6 @@ public class QuestionAnsweringState implements State{
 		if(triple!=null && triple.patiens!=null && "you".equals(triple.patiens.toLowerCase())) triple.patiens = "i";
 		if(triple!=null && triple.predicate!=null && "are".equals(triple.predicate.toLowerCase())) triple.predicate = "am";
 
-		//TODO Integrate results from intent analysis into sentence type detection.
-		List<Interpretation> result = new ArrayList<>();
 		//Added intent-parsing information in applicable cases.
 		boolean useIntent = false;
 		String intentType = "";
