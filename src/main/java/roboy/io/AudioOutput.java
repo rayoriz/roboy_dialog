@@ -12,6 +12,8 @@ import java.util.List;
 
 /**
  * Created by laura on 21.10.17.
+ *
+ * To output custom audio files to roboy's speaker
  */
 public class AudioOutput implements OutputDevice {
     // Implementation from: http://www.jsresources.org/examples/SimpleAudioPlayer.java.html
