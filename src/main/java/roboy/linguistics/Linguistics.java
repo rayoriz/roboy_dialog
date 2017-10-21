@@ -116,6 +116,12 @@ public class Linguistics {
 	public static final String EMOTION = "emotion";
 	
 	/**
+	 * Contains the emotion Roboy intends to express based on the keyword detection in the EmotionAnalyzer
+	 */
+	public static final String QUOTATION = "quotation";
+	
+	
+	/**
 	 * The result of the machine learning intent classification in the IntentAnalyzer
 	 */
 	public static final String INTENT = "intent";
