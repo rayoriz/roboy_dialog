@@ -148,7 +148,7 @@ public class DialogSystem {
 //        CerevoiceOutput output2 = new CerevoiceOutput(rosMainNode);
 		// OutputDevice output = new BingOutput();
 //        OutputDevice output2 = new UdpOutput(ds, "localhost", 55556);
-		EmotionOutput emotion = new EmotionOutput(rosMainNode);
+		EmotionOutput emotion = new EmotionOutput(rosMainNode, (CerevoiceOutput) output1);
 //        OutputDevice output = new CommandLineOutput();
 //        OutputDevice output1 = new AudioOutput();
 //       OutputDevice output1 = new CerevoiceOutput(rosMainNode);

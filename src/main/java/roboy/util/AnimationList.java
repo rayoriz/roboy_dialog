@@ -4,14 +4,14 @@ package roboy.util;
  * Encodes the animation names as they should be sent to the ROS face node.
  */
 public enum AnimationList {
-    PULP_FICTION("pulp_fiction", 5),
-    PULP_FICTION_FACE("pulp_fiction_face", 5),
+    PULP_FICTION("pulp_fiction", 3),
+    PULP_FICTION_FACE("pulp_fiction_face", 3),
     TERMINATOR("terminator", 5),
-    TERMINATOR_FACE("terminator_face", 5),
-    TERMINATOR2("terminator2", 5),
-    BUGS_BUNNY("bugs_bunny", 5),
-    MINIONS("minions", 5),
-    BIRTHDAY("birthday", 15);
+    TERMINATOR_FACE("terminator_face", 3),
+    TERMINATOR2("terminator2", 3),
+    BUGS_BUNNY("bugs_bunny", 3),
+    MINIONS("minions", 10),
+    BIRTHDAY("happy_birthday", 10);
 
 
     public String animationName;

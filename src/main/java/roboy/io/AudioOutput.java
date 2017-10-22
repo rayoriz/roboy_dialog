@@ -21,7 +21,7 @@ public class AudioOutput implements OutputDevice {
     public void act(List<Action> actions) {
         for(Action a : actions){
             if(a instanceof AudioAction){
-                final String audioFilePath  = ((AudioAction) a).getAudioName().filePath;
+                final String audioFilePath  = ((AudioAction) a).getAudioName();
                 File soundFile = new File(audioFilePath);
                 AudioInputStream audioInputStream = null;
                 try

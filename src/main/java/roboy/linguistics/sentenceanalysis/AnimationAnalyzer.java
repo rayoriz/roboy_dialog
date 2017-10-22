@@ -28,11 +28,14 @@ public class AnimationAnalyzer implements Analyzer {
         else if (tokens.contains("bugs") && tokens.contains("bunny") ) {
             animation = AnimationList.BUGS_BUNNY;
         }
-        else if (tokens.contains("minion") || tokens.contains("minions")|| tokens.contains("banana")) {
+        else if (tokens.contains("minion") || tokens.contains("minions")|| tokens.contains("banana")|| tokens.contains("bananas")) {
             animation = AnimationList.MINIONS;
         }
         else if (tokens.contains("birthday") && tokens.contains("today")) {
             animation = AnimationList.BIRTHDAY;
+        }
+        else if (tokens.contains("so") && tokens.contains("long")) {
+            animation = AnimationList.TERMINATOR2;
         }
         else if (tokens.contains("what") ) {
             if(WHATCOUNT == 3) {
