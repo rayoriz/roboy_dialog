@@ -12,10 +12,7 @@ import roboy.linguistics.sentenceanalysis.Interpretation;
 import roboy.logic.PASInterpreter;
 import roboy.memory.DBpediaMemory;
 import roboy.memory.Memory;
-import roboy.util.MovieList;
-import roboy.util.Lists;
-import roboy.util.Maps;
-import roboy.util.Relation;
+import roboy.util.*;
 
 /**
  * State in which Roboy is answering questions based on DBpedia or the knowledge base
@@ -80,14 +77,6 @@ public class QuestionAnsweringState implements State{
 	public Reaction react(Interpretation input) {
 		//TODO Integrate results from intent analysis into sentence type detection.
 		List<Interpretation> result = new ArrayList<>();
-
-		// Check for movie reference. If present, react with movie quote.
-		MovieList movieReference = (MovieList) input.getFeatures().get(Linguistics.QUOTATION);
-		if(movieReference != null) {
-			result.add(new Interpretation(SENTENCE_TYPE.MOVIEREFERENCE,
-					Maps.stringObjectMap(Linguistics.QUOTATION, movieReference)));
-			return new Reaction(this, result);
-		}
 
 		Triple triple = (Triple) input.getFeatures().get(Linguistics.TRIPLE);
 		

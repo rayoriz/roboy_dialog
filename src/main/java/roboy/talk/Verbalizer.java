@@ -34,7 +34,6 @@ public class Verbalizer {
 		case FAREWELL: return farewell(interpretation);
 		case SEGUE:    return segue(interpretation);
 		case ANECDOTE: return anecdote(interpretation);
-		case MOVIEREFERENCE: return moviereference(interpretation);
 		default:       return literalSentence(interpretation);
 		}
 	}
@@ -44,21 +43,6 @@ public class Verbalizer {
 	
 	private SpeechAction greet(Interpretation interpretation){
 		return new SpeechAction(StatementBuilder.random(greetings));
-	}
-
-	private FaceAction moviereference(Interpretation interpretation) {
-		MovieList key = (MovieList) interpretation.getFeatures().get(Linguistics.QUOTATION);
-		if(key.equals(MovieList.BUGS_BUNNY)) {
-			return new FaceAction("bugs_bunny");
-		} else if(key.equals(MovieList.PULP_FICTION)) {
-			return new FaceAction("pulp_fiction");
-		} else if(key.equals(MovieList.TERMINATOR)) {
-			return new FaceAction("terminator");
-		}
-		else if(key.equals(MovieList.TERMINATOR2)) {
-		return new FaceAction("terminator2");
-	}
-		return null;
 	}
 	
 	public static final List<String> farewells =

@@ -13,6 +13,7 @@ import roboy.logic.StatementInterpreter;
 import roboy.memory.WorkingMemory;
 import roboy.memory.nodes.Interlocutor;
 import roboy.talk.Verbalizer;
+import roboy.util.AnimationList;
 import roboy.util.Lists;
 import roboy.ros.RosMainNode;
 
@@ -136,6 +137,9 @@ public class SmallTalkPersonality implements Personality {
                 }
                 if (input.getFeatures().containsKey(Linguistics.EMOTION)) {
                     act.add(new FaceAction((String) input.getFeatures().get(Linguistics.EMOTION)));
+                }
+                if (input.getFeatures().containsKey(Linguistics.QUOTATION)) {
+                    act.add(new FaceAction((AnimationList) input.getFeatures().get(Linguistics.QUOTATION)));
                 }
                 return act;
             }

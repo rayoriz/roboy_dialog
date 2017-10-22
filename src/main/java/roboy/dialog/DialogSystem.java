@@ -1,6 +1,5 @@
 package roboy.dialog;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -8,27 +7,17 @@ import java.util.List;
 import com.google.gson.JsonIOException;
 
 import roboy.dialog.action.Action;
-import roboy.dialog.action.FaceAction;
 import roboy.dialog.action.ShutDownAction;
 import roboy.dialog.personality.Personality;
 import roboy.dialog.personality.SmallTalkPersonality;
 
 import roboy.io.*;
 
-import roboy.linguistics.Linguistics;
 import roboy.linguistics.sentenceanalysis.*;
 import roboy.memory.Neo4jMemory;
-import roboy.memory.nodes.MemoryNodeModel;
 import roboy.talk.Verbalizer;
 
 import roboy.ros.RosMainNode;
-
-import javax.sound.sampled.AudioFormat;
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.DataLine;
-import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.SourceDataLine;
 
 /**
  * The dialog manager's main class.
@@ -164,7 +153,7 @@ public class DialogSystem {
 //        OutputDevice output1 = new AudioOutput();
 //       OutputDevice output1 = new CerevoiceOutput(rosMainNode);
 //		OutputDevice multiOut = new MultiOutputDevice(output,output1);//, output2, emotion);
-        OutputDevice multiOut = new MultiOutputDevice(output1, emotion);
+        OutputDevice multiOut = new MultiOutputDevice(emotion, output1);
 
 		List<Analyzer> analyzers = new ArrayList<Analyzer>();
 		analyzers.add(new Preprocessor());
@@ -176,7 +165,7 @@ public class DialogSystem {
 		analyzers.add(new OntologyNERAnalyzer());
 		analyzers.add(new AnswerAnalyzer());
         analyzers.add(new EmotionAnalyzer());
-        analyzers.add(new MovieAnalyzer());
+        analyzers.add(new AnimationAnalyzer());
 
         // analyzers.add(new IntentAnalyzer(rosMainNode));
 

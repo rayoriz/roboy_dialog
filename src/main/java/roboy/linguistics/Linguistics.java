@@ -117,7 +117,7 @@ public class Linguistics {
 	public static final String EMOTION = "emotion";
 	
 	/**
-	 * Contains the emotion Roboy intends to express based on the keyword detection in the MovieAnalyzer
+	 * Contains the emotion Roboy intends to express based on the keyword detection in the AnimationAnalyzer
 	 */
 	public static final String QUOTATION = "quotation";
 	
