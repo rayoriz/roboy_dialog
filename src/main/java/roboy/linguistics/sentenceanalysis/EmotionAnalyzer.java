@@ -17,8 +17,8 @@ public class EmotionAnalyzer implements Analyzer {
         List<String> tokens = Arrays.asList((String[]) sentence.getFeature(Linguistics.TOKENS));
         if (tokens.contains("love") || tokens.contains("cute"))
             sentence.getFeatures().put(Linguistics.EMOTION, "shy");
-        else if (tokens.contains("munich") || tokens.contains("robotics"))
-            sentence.getFeatures().put(Linguistics.EMOTION, "smileblink");
+//        else if (tokens.contains("munich") || tokens.contains("robotics"))
+//            sentence.getFeatures().put(Linguistics.EMOTION, "smileblink");
         else if (tokens.contains("left") )
             sentence.getFeatures().put(Linguistics.EMOTION, "look"
             		+ "left");
@@ -26,10 +26,10 @@ public class EmotionAnalyzer implements Analyzer {
             sentence.getFeatures().put(Linguistics.EMOTION, "lookright");
         else if (tokens.contains("cat") || tokens.contains("cats") )
             sentence.getFeatures().put(Linguistics.EMOTION, "catiris");
-        if (sentence.getFeatures().containsKey(Linguistics.ROBOYDETECTED))
-        {
-            sentence.getFeatures().put(Linguistics.EMOTION, "smileblink");
-        }
+//        if (sentence.getFeatures().containsKey(Linguistics.ROBOYDETECTED))
+//        {
+//            sentence.getFeatures().put(Linguistics.EMOTION, "smileblink");
+//        }
         return sentence;
     }
 }

@@ -147,24 +147,24 @@ public class DialogSystem {
         RosMainNode rosMainNode = new RosMainNode();
         Neo4jMemory memory = Neo4jMemory.getInstance(rosMainNode);
 
-	     InputDevice input = new CommandLineInput();
-//		 InputDevice input = new BingInput(rosMainNode);
+//	     InputDevice input = new CommandLineInput();
+		 InputDevice input = new BingInput(rosMainNode);
 //        DatagramSocket ds = new DatagramSocket(55555);
 //        InputDevice input = new UdpInput(ds);
 //		InputDevice celebInput = new CelebritySimilarityInput();
 //		InputDevice roboyDetectInput = new RoboyNameDetectionInput();
 		InputDevice multiIn = new MultiInputDevice(input);//, celebInput, roboyDetectInput);
 
-//		OutputDevice output1 = new CerevoiceOutput(rosMainNode);
+		OutputDevice output1 = new CerevoiceOutput(rosMainNode);
 //        CerevoiceOutput output2 = new CerevoiceOutput(rosMainNode);
 		// OutputDevice output = new BingOutput();
 //        OutputDevice output2 = new UdpOutput(ds, "localhost", 55556);
 		EmotionOutput emotion = new EmotionOutput(rosMainNode);
-        OutputDevice output = new CommandLineOutput();
-        OutputDevice output1 = new AudioOutput();
+//        OutputDevice output = new CommandLineOutput();
+//        OutputDevice output1 = new AudioOutput();
 //       OutputDevice output1 = new CerevoiceOutput(rosMainNode);
 //		OutputDevice multiOut = new MultiOutputDevice(output,output1);//, output2, emotion);
-        OutputDevice multiOut = new MultiOutputDevice(output, output1, emotion);
+        OutputDevice multiOut = new MultiOutputDevice(output1, emotion);
 
 		List<Analyzer> analyzers = new ArrayList<Analyzer>();
 		analyzers.add(new Preprocessor());

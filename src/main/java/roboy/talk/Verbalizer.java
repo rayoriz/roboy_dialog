@@ -9,7 +9,7 @@ import java.util.regex.Pattern;
 import roboy.dialog.action.*;
 import roboy.linguistics.Linguistics;
 import roboy.linguistics.sentenceanalysis.Interpretation;
-import roboy.util.AudioFileMapping;
+import roboy.util.MovieList;
 import roboy.util.Maps;
 
 /**
@@ -47,7 +47,18 @@ public class Verbalizer {
 	}
 
 	private FaceAction moviereference(Interpretation interpretation) {
-		return new FaceAction("pulp_fiction");
+		MovieList key = (MovieList) interpretation.getFeatures().get(Linguistics.QUOTATION);
+		if(key.equals(MovieList.BUGS_BUNNY)) {
+			return new FaceAction("bugs_bunny");
+		} else if(key.equals(MovieList.PULP_FICTION)) {
+			return new FaceAction("pulp_fiction");
+		} else if(key.equals(MovieList.TERMINATOR)) {
+			return new FaceAction("terminator");
+		}
+		else if(key.equals(MovieList.TERMINATOR2)) {
+		return new FaceAction("terminator2");
+	}
+		return null;
 	}
 	
 	public static final List<String> farewells =
