@@ -20,7 +20,7 @@ public class AnimationAnalyzer implements Analyzer {
        // sample movies which roboy can detect
         AnimationList animation = null;
         if (tokens.contains("terminator") || (tokens.contains("arnold"))){
-            animation = AnimationList.TERMINATOR;
+            animation = AnimationList.TERMINATOR_FACE;
         }
         else if (tokens.contains("pulp") || tokens.contains("fiction")) {
             animation = AnimationList.PULP_FICTION;
@@ -37,7 +37,7 @@ public class AnimationAnalyzer implements Analyzer {
         else if (tokens.contains("what") ) {
             if(WHATCOUNT == 3) {
                 WHATCOUNT = 0;
-                animation = AnimationList.PULP_FICTION;
+                animation = AnimationList.PULP_FICTION_FACE;
             } else {
                 WHATCOUNT++;
             }

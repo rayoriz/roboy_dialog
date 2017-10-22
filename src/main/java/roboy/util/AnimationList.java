@@ -5,7 +5,9 @@ package roboy.util;
  */
 public enum AnimationList {
     PULP_FICTION("pulp_fiction", 5),
+    PULP_FICTION_FACE("pulp_fiction_face", 5),
     TERMINATOR("terminator", 5),
+    TERMINATOR_FACE("terminator_face", 5),
     TERMINATOR2("terminator2", 5),
     BUGS_BUNNY("bugs_bunny", 5),
     MINIONS("minions", 5),

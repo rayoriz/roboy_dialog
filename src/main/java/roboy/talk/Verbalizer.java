@@ -9,7 +9,6 @@ import java.util.regex.Pattern;
 import roboy.dialog.action.*;
 import roboy.linguistics.Linguistics;
 import roboy.linguistics.sentenceanalysis.Interpretation;
-import roboy.util.MovieList;
 import roboy.util.Maps;
 
 /**
