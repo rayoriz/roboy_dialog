@@ -56,7 +56,10 @@ public class EmotionOutput implements OutputDevice
 				}
 				System.out.print(((FaceAction) action).getState());
 				rosMainNode.ShowEmotion(action.getState());
-				int wait = action.animation.duration;
+				if(action.animation.equals(AnimationList.TERMINATOR2)){
+					System.exit(0);
+				}
+//				int wait = action.animation.duration;
 //				try {
 //					TimeUnit.SECONDS.sleep(wait);
 //				} catch (InterruptedException e) {
@@ -68,7 +71,6 @@ public class EmotionOutput implements OutputDevice
 				System.out.print(((FaceAction) action).getState());
 				rosMainNode.ShowEmotion(((FaceAction) action).getState());
 			}
-
 		}
 	}
 

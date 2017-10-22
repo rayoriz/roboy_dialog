@@ -176,7 +176,7 @@ public class DialogSystem {
         }
 
         System.out.println("Initialized...");
-
+        ((CerevoiceOutput) output1).say("La la la la la, hello world!");
         while(true) {
 
 //            while (!Vision.getInstance().findFaces()) {
